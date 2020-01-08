@@ -1,0 +1,64 @@
+{
+  "name": "vue-dark-mode",
+  "version": "0.1.0",
+  "description": "A component that helps you implement \"dark-mode\" in your Vue app",
+  "main": "dist/vue-dark-mode.umd.js",
+  "module": "dist/vue-dark-mode.esm.js",
+  "unpkg": "dist/vue-dark-mode.min.js",
+  "browser": {
+    "./sfc": "src/vue-dark-mode.vue"
+  },
+  "scripts": {
+    "dev": "rollup --config rollup.config.dev.js --watch",
+    "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
+    "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/my-component.umd.js",
+    "build:es": "rollup --config build/rollup.config.js --format es --file dist/my-component.esm.js",
+    "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/my-component.min.js",
+    "release": "standard-version",
+    "test:unit": "jest",
+    "test:e2e": "cypress run --headless",
+    "test:e2e:open": "cypress open ",
+    "projectPublish": "git push --follow-tags origin master && npm publish",
+    "publishDoc": "surge doc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vue-a11y/vue-dark-mode.git"
+  },
+  "keywords": [
+    "vue",
+    "component",
+    "a11y",
+    "accessibility",
+    "dark-mode",
+    "light",
+    "sensitivity",
+    "visual",
+    "impairments",
+    "vue-a11y",
+    "vuepress",
+    "vue.js"
+  ],
+  "author": "Alan Ktquez <ktquez@gmail.com> (https://ktquez-play.web.app/en/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vue-a11y/vue-dark-mode/issues"
+  },
+  "homepage": "https://github.com/vue-a11y/vue-dark-mode#readme",
+  "devDependencies": {
+    "@vue/test-utils": "^1.0.0-beta.30",
+    "babel-jest": "^24.9.0",
+    "chokidar": "^3.3.1",
+    "jest": "^24.9.0",
+    "rollup": "^1.29.0",
+    "rollup-plugin-buble": "^0.19.8",
+    "rollup-plugin-butternut": "^0.1.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-eslint": "^7.0.0",
+    "rollup-plugin-livereload": "^1.0.4",
+    "rollup-plugin-serve": "^1.0.1",
+    "rollup-plugin-vue": "^5.1.4",
+    "vue": "^2.6.11",
+    "vue-template-compiler": "^2.6.11"
+  }
+}
