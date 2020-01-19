@@ -12,10 +12,10 @@ export default {
       compileTemplate: true
     }),
     buble(),
-    butternut(),
+    butternut()
   ],
   output: {
     name: 'VueDarkMode',
-    exports: 'named',
+    exports: 'named'
   }
 }
