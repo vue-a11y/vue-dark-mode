@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Demo - Vue DarkMode</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="./vue-dark-mode.js"></script>
+  <style>
+    * {
+      box-sizing: border-box !important;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    a {
+      color: #42B983;
+    }
+
+    .sr-only {
+      position: absolute;
+      clip: rect(1px, 1px, 1px, 1px);
+      height: 1px;
+      width: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .header {
+      width: 100%;
+      padding: 16px 4%;
+      background-color: #F7FAFC;
+      color: #1A202C;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1024px;
+      margin: 0 auto;
+      margin-top: 40px;
+      padding: 2%;
+    }
+
+    .container > p {
+      margin-bottom: 20px;
+    }
+
+    .container > p.image {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <h1>
+        VueDarkMode by CSS Filters
+      </h1>
+      <div>
+        <vue-dark-mode>
+          <template v-slot="{ mode }">
+            <span class="sr-only">Change to {{ mode ? 'light mode' : 'dark mode' }}</span>
+            Dark mode: {{ mode ? 'on' : 'off' }}
+          </template>
+        </vue-dark-mode>
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <p>
+          Lorem ipsum dolor sit amet, <a href="#">consectetur adipiscing elit</a>. Aenean finibus iaculis ante non euismod. Integer congue eu eros sed ullamcorper. Integer in est at lorem hendrerit luctus sed luctus purus. Cras eget velit vitae purus hendrerit ultricies. Nunc ut bibendum mi. Praesent semper tortor at odio dignissim, ut vehicula ex mollis. Praesent nibh diam, hendrerit ac erat et, dignissim scelerisque neque. Aenean condimentum pharetra feugiat. Aliquam ex tortor, luctus ut scelerisque in, cursus elementum tellus. Curabitur convallis sit amet sem imperdiet pulvinar. Quisque finibus sem pellentesque neque placerat, sed laoreet urna ornare. Morbi in ex nisl. Nam et erat vel mi volutpat malesuada.
+        </p>
+        <p class="image">
+          <img src="https://i.picsum.photos/id/547/800/600.jpg" alt="landscapes with mountains">
+        </p>
+        <p>
+          Sed neque nunc, gravida vel odio ut, elementum elementum libero. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis feugiat neque quis nisl tempus, vel varius diam euismod. Duis condimentum placerat ligula, ac scelerisque velit. Nullam mollis massa vitae dolor posuere fermentum. Fusce hendrerit at ex eget commodo. Mauris leo tortor, varius non ipsum sed, commodo lobortis metus. Vivamus pellentesque diam in massa vulputate interdum. Aenean consequat, tellus at fringilla laoreet, nisl augue sagittis risus, mollis pulvinar quam ipsum sit amet neque. Pellentesque laoreet ut lacus ac varius.
+        </p>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app'
+    })
+  </script>
+</body>
+</html>
