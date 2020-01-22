@@ -48,6 +48,11 @@ export default {
       darkMode: this.isDark
     }
   },
+  created () {
+    if (!this.$isServer) {
+      this.darkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches
+    }
+  },
   methods: {
     toggleDarkMode () {
       this.darkMode = !this.darkMode
