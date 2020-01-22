@@ -66,9 +66,8 @@
         VueDarkMode by CSS Filters
       </h1>
       <div>
-        <vue-dark-mode>
+        <vue-dark-mode :is-dark="preferDark">
           <template v-slot="{ mode }">
-            <span class="sr-only">Change to {{ mode ? 'light mode' : 'dark mode' }}</span>
             Dark mode: {{ mode ? 'on' : 'off' }}
           </template>
         </vue-dark-mode>
@@ -91,7 +90,12 @@
 
   <script>
     new Vue({
-      el: '#app'
+      el: '#app',
+      computed: {
+        preferDark: function () {
+          return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        }
+      }
     })
   </script>
 </body>

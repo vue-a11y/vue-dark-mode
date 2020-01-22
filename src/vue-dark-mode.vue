@@ -37,9 +37,15 @@
 <script>
 export default {
   name: 'DarkMode',
+  props: {
+    isDark: {
+      type: Boolean,
+      default: false
+    }
+  },
   data () {
     return {
-      darkMode: false
+      darkMode: this.isDark
     }
   },
   methods: {
