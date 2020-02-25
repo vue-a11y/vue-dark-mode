@@ -32,6 +32,10 @@ export default {
       type: String,
       default: styles
     },
+    className: {
+      type: String,
+      default: 'dark-mode'
+    },
     persist: {
       type: String,
       default: 'localStorage'
@@ -66,9 +70,9 @@ export default {
   methods: {
     supportsFilters () {
       const div = document.createElement('div')
-      const hasFilter = 'filter' in div.style
-      if (!hasFilter) console.warn('CSS filter is not supported')
-      return hasFilter
+      const isSupported = 'filter' in div.style
+      if (!isSupported) console.trace('CSS filter is not supported')
+      return isSupported
     },
     prefersDark () {
       return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -77,7 +81,7 @@ export default {
       if (this.themeColorMeta) return this.themeColorMeta.setAttribute('content', color)
     },
     toggleClass () {
-      document.documentElement.classList.toggle('dark-mode')
+      document.documentElement.classList.toggle(this.className)
     },
     setDarkMode () {
       window[this.persist].setItem('darkMode', 'on')
