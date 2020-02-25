@@ -5,7 +5,7 @@
     class="vue-darkmode"
   >
     <slot :mode="darkMode"></slot>
-    <component :is="'style'" :media="darkMode && useFilter ? 'screen' : 'none'" scoped>
+    <component :is="'style'" :media="darkMode && $_use_filter ? 'screen' : 'none'" scoped>
       html {
         background-color: #222 !important;
         color: #333 !important;
@@ -62,7 +62,8 @@ export default {
   data () {
     return {
       darkMode: false,
-      themeColorMeta: null
+      themeColorMeta: null,
+      $_use_filter: false
     }
   },
   created () {
@@ -70,10 +71,19 @@ export default {
     if (!this.$isServer) {
       this.darkMode = !!window[this.storage].getItem('darkMode') || this.isDark || this.prefersDark()
       this.themeColorMeta = document.querySelector('meta[name="theme-color"]')
+      if (this.useFilter) {
+        this.$_use_filter = this.supportsFilters()
+      }
       if (this.darkMode) this.setDarkMode()
     }
   },
   methods: {
+    supportsFilters () {
+      const div = document.createElement('div')
+      const hasFilter = 'filter' in div.style
+      if (!hasFilter) console.warn('CSS filter is not supported')
+      return hasFilter
+    },
     prefersDark () {
       return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
     },
