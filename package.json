@@ -11,9 +11,9 @@
   "scripts": {
     "dev": "rollup --config rollup.config.dev.js --watch",
     "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
-    "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/my-component.umd.js",
-    "build:es": "rollup --config build/rollup.config.js --format es --file dist/my-component.esm.js",
-    "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/my-component.min.js",
+    "build:umd": "rollup --config rollup.config.prod.js --format umd --file dist/my-component.umd.js",
+    "build:es": "rollup --config rollup.config.prod.js --format es --file dist/my-component.esm.js",
+    "build:unpkg": "rollup --config rollup.config.prod.js --format iife --file dist/my-component.min.js",
     "release": "standard-version",
     "test:unit": "jest",
     "test:e2e": "cypress run --headless",
