@@ -1,6 +1,6 @@
 import buble from 'rollup-plugin-buble'
 import commonjs from 'rollup-plugin-commonjs'
-import terser from 'rollup-plugin-terser'
+import { terser } from 'rollup-plugin-terser'
 import vue from 'rollup-plugin-vue'
 
 export default {
