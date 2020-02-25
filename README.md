@@ -1,3 +1,3 @@
 # vue-dark-mode
-[WIP] A component that helps you implement "dark-mode" in your Vue app
+A vue component that applies dark mode using some CSS 3 properties
 

@@ -16,6 +16,7 @@ module.exports = {
     parser: 'babel-eslint'
   },
   rules: {
-    'no-console': 'off'
+    'no-console': 'off',
+    'vue-a11y/click-events-have-key-events': 'off'
   }  
 }
