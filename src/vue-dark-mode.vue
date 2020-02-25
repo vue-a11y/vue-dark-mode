@@ -1,40 +1,22 @@
 <template>
   <button
-    @click="toggleDarkMode"
     :aria-pressed="darkMode"
     class="vue-darkmode"
+    @click="toggleDarkMode"
   >
-    <slot :mode="darkMode"></slot>
-    <component :is="'style'" :media="darkMode && $_use_filter ? 'screen' : 'none'" scoped>
-      html {
-        background-color: #222 !important;
-        color: #333 !important;
-      }
-
-      body {
-        filter: contrast(90%) invert(90%) hue-rotate(180deg) !important;
-        -ms-filter: invert(100%);
-        -webkit-filter: contrast(90%) invert(90%) hue-rotate(180deg) !important;
-        text-rendering: optimizeSpeed;
-        image-rendering: optimizeSpeed;
-        -webkit-font-smoothing: antialiased;
-        -webkit-image-rendering: optimizeSpeed;
-      }
-
-      input, textarea, select {
-        color: purple;
-      }
-
-      img, video, iframe, canvas, svg, embed[type='application/x-shockwave-flash'], object[type='application/x-shockwave-flash'], *[style*='url('] {
-        filter: invert(100%) hue-rotate(-180deg) !important;
-        -ms-filter: invert(100%) !important;
-        -webkit-filter: invert(100%) hue-rotate(-180deg) !important;
-      }
-    </component>
+    <slot :mode="darkMode" />
+    <component
+      :is="'style'"
+      :media="darkMode && $_use_filter ? 'screen' : 'none'"
+      scoped
+      v-text="styles.trim()"
+    />
   </button>
 </template>
 
 <script>
+import { styles } from './styles'
+
 export default {
   name: 'DarkMode',
   props: {
@@ -46,7 +28,11 @@ export default {
       type: Boolean,
       default: true
     },
-    storage: {
+    styles: {
+      type: String,
+      default: styles
+    },
+    persist: {
       type: String,
       default: 'localStorage'
     },
@@ -69,7 +55,7 @@ export default {
   created () {
     this.darkMode = this.isDark
     if (!this.$isServer) {
-      this.darkMode = !!window[this.storage].getItem('darkMode') || this.isDark || this.prefersDark()
+      this.darkMode = !!window[this.persist].getItem('darkMode') || this.isDark || this.prefersDark()
       this.themeColorMeta = document.querySelector('meta[name="theme-color"]')
       if (this.useFilter) {
         this.$_use_filter = this.supportsFilters()
@@ -94,12 +80,12 @@ export default {
       document.documentElement.classList.toggle('dark-mode')
     },
     setDarkMode () {
-      window[this.storage].setItem('darkMode', 'on')
+      window[this.persist].setItem('darkMode', 'on')
       this.toggleClass()
       this.setThemeColor(this.themeColorDark)
     },
     removeDarkMode () {
-      window[this.storage].removeItem('darkMode')
+      window[this.persist].removeItem('darkMode')
       this.toggleClass()
       this.setThemeColor(this.themeColorLight)
     },
