@@ -11,15 +11,15 @@
   "scripts": {
     "dev": "rollup --config rollup.config.dev.js --watch",
     "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
-    "build:umd": "rollup --config rollup.config.prod.js --format umd --file dist/my-component.umd.js",
-    "build:es": "rollup --config rollup.config.prod.js --format es --file dist/my-component.esm.js",
-    "build:unpkg": "rollup --config rollup.config.prod.js --format iife --file dist/my-component.min.js",
+    "build:umd": "rollup --config rollup.config.prod.js --format umd --file dist/vue-dark-mode.umd.js",
+    "build:es": "rollup --config rollup.config.prod.js --format es --file dist/vue-dark-mode.esm.js",
+    "build:unpkg": "rollup --config rollup.config.prod.js --format iife --file dist/vue-dark-mode.min.js",
     "release": "standard-version",
     "test:unit": "jest",
     "test:e2e": "cypress run --headless",
     "test:e2e:open": "cypress open ",
-    "projectPublish": "git push --follow-tags origin master && npm publish",
-    "publishDoc": "surge doc"
+    "project:publish": "git push --follow-tags origin master && npm publish",
+    "publish:demo": "cp ./dist/vue-dark-mode.min.js ./demo/vue-dark-mode.js && surge demo"
   },
   "repository": {
     "type": "git",
