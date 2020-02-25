@@ -8,7 +8,7 @@ module.exports = {
     'vue-a11y'
   ],
   extends: [
-    'plugin:vue/essential',
+    'plugin:vue/recommended',
     '@vue/standard',
     'plugin:vue-a11y/base'
   ],
