@@ -1,7 +1,7 @@
-import vue from 'rollup-plugin-vue'
-import butternut from 'rollup-plugin-butternut'
 import buble from 'rollup-plugin-buble'
 import commonjs from 'rollup-plugin-commonjs'
+import terser from 'rollup-plugin-terser'
+import vue from 'rollup-plugin-vue'
 
 export default {
   input: 'src/index.js',
@@ -12,7 +12,7 @@ export default {
       compileTemplate: true
     }),
     buble(),
-    butternut()
+    terser()
   ],
   output: {
     name: 'VueDarkMode',
