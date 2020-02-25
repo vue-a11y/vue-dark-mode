@@ -4,7 +4,7 @@
     class="vue-darkmode"
     @click="toggleDarkMode"
   >
-    <slot :mode="darkMode" />
+    <slot :isDark="darkMode" />
     <component
       :is="'style'"
       :media="darkMode && $_use_filter ? 'screen' : 'none'"

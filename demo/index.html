@@ -67,8 +67,8 @@
       </h1>
       <div>
         <vue-dark-mode>
-          <template v-slot="{ mode }">
-            Dark mode: <span aria-hidden="true">{{ mode ? 'on' : 'off' }}</span>
+          <template v-slot="{ isDark }">
+            Dark mode: <span aria-hidden="true">{{ isDark ? 'on' : 'off' }}</span>
           </template>
         </vue-dark-mode>
       </div>
