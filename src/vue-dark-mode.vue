@@ -71,7 +71,7 @@ export default {
     supportsFilters () {
       const div = document.createElement('div')
       const isSupported = 'filter' in div.style
-      if (!isSupported) console.trace('CSS filter is not supported')
+      if (!isSupported) console.warn('CSS filter is not supported')
       return isSupported
     },
     prefersDark () {
