@@ -14,6 +14,8 @@
     "build:umd": "rollup --config rollup.config.prod.js --format umd --file dist/vue-dark-mode.umd.js",
     "build:es": "rollup --config rollup.config.prod.js --format es --file dist/vue-dark-mode.esm.js",
     "build:unpkg": "rollup --config rollup.config.prod.js --format iife --file dist/vue-dark-mode.min.js",
+    "docs": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
     "release": "standard-version",
     "test:unit": "jest",
     "test:e2e": "cypress run --headless",

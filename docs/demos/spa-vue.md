@@ -1,0 +1,1 @@
+# Use in a SPA Vue
