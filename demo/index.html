@@ -57,6 +57,12 @@
     .container > p.image {
       text-align: center;
     }
+
+    .btn-darkmode.vue-dark-mode {
+      padding: 6px 10px;
+      border: 1px solid #999;
+      border-radius: 4px;
+    }
   </style>
 </head>
 <body>
@@ -66,7 +72,7 @@
         VueDarkMode by CSS Filters
       </h1>
       <div>
-        <vue-dark-mode>
+        <vue-dark-mode class="btn-darkmode">
           <template v-slot="{ isDark }">
             Dark mode: <span aria-hidden="true">{{ isDark ? 'on' : 'off' }}</span>
           </template>
