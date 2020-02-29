@@ -52,6 +52,7 @@
     "@vue/eslint-config-standard": "^5.1.0",
     "@vue/test-utils": "^1.0.0-beta.30",
     "@vuepress/plugin-register-components": "^1.2.0",
+    "@vuepress/theme-default": "^1.3.1",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
     "chokidar": "^3.3.1",
@@ -73,10 +74,8 @@
     "rollup-plugin-vue": "^5.1.1",
     "rollup-plugin-vue-inline-svg": "^1.1.1",
     "vue": "^2.6.11",
-    "vue-template-compiler": "^2.6.11"
-  },
-  "dependencies": {
-    "@vuepress/theme-default": "^1.3.1",
+    "vue-template-compiler": "^2.6.11",
     "vuepress": "^1.3.1"
-  }
+  },
+  "dependencies": {}
 }
