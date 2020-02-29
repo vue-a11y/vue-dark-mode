@@ -10,7 +10,7 @@
   },
   "scripts": {
     "dev": "rollup --config rollup.config.dev.js --watch",
-    "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
+    "build": "npm run build:umd & npm run build:es & npm run build:unpkg && cp ./src/vue-dark-mode.vue ./dist",
     "build:umd": "rollup --config rollup.config.prod.js --format umd --file dist/vue-dark-mode.umd.js",
     "build:es": "rollup --config rollup.config.prod.js --format es --file dist/vue-dark-mode.esm.js",
     "build:unpkg": "rollup --config rollup.config.prod.js --format iife --file dist/vue-dark-mode.min.js",
