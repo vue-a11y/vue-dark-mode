@@ -1,7 +1,7 @@
 <template>
   <button
     :aria-pressed="darkMode"
-    class="vue-darkmode"
+    class="vue-dark-mode"
     @click="toggleDarkMode"
   >
     <slot :isDark="darkMode" />
@@ -102,11 +102,12 @@ export default {
 }
 </script>
 
-<style scoped>
-.vue-darkmode {
+<style>
+.vue-dark-mode {
   appearance: none;
   background-color: transparent;
   color: inherit;
   border: none;
+  cursor: pointer;
 }
 </style>
