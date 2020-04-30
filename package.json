@@ -1,5 +1,5 @@
 {
-  "name": "vue-dark-mode",
+  "name": "@vue-a11y/dark-mode",
   "version": "0.1.0",
   "description": "A component that helps you implement \"dark-mode\" in your Vue app",
   "main": "dist/vue-dark-mode.umd.js",
