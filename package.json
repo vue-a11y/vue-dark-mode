@@ -16,12 +16,12 @@
     "build:unpkg": "rollup --config rollup.config.prod.js --format iife --file dist/vue-dark-mode.min.js",
     "docs": "vuepress dev docs",
     "docs:build": "vuepress build docs",
+    "docs:publish": "surge docs/.vuepress/dist https://vue-dark-mode.surge.sh",
     "release": "standard-version",
     "test:unit": "jest",
-    "test:e2e": "cypress run --headless",
-    "test:e2e:open": "cypress open ",
-    "project:publish": "git push --follow-tags origin master && npm publish",
-    "publish:demo": "cp ./dist/vue-dark-mode.min.js ./demo/vue-dark-mode.js && surge demo"
+    "test:e2e": "node_modules/.bin/cypress run --headless",
+    "test:e2e:open": "node_modules/.bin/cypress open ",
+    "project:publish": "git push --follow-tags origin master && npm publish"
   },
   "repository": {
     "type": "git",
