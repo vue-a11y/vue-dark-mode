@@ -63,6 +63,7 @@
     "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-vue": "^6.1.2",
     "eslint-plugin-vue-a11y": "0.0.31",
+    "eslint-plugin-vuejs-accessibility": "^0.1.1",
     "jest": "^24.9.0",
     "rollup": "^1.29.0",
     "rollup-plugin-buble": "^0.19.8",

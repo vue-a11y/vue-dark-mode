@@ -5,18 +5,17 @@ module.exports = {
     node: true
   },
   plugins: [
-    'vue-a11y'
+    'vuejs-accessibility'
   ],
   extends: [
     'plugin:vue/recommended',
     '@vue/standard',
-    'plugin:vue-a11y/base'
+    'plugin:vuejs-accessibility/recommended'
   ],
   parserOptions: {
     parser: 'babel-eslint'
   },
   rules: {
-    'no-console': 'off',
-    'vue-a11y/click-events-have-key-events': 'off'
+    'no-console': 'off'
   }  
 }
