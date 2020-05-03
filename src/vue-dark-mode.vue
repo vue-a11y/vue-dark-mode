@@ -1,151 +1,162 @@
 <template>
   <button
-    :aria-pressed="darkMode"
+    :aria-label="`toggle to ${getNextMode} mode color`"
+    :title="`toggle to ${getNextMode} mode color`"
     class="vue-dark-mode"
-    @click="toggleDarkMode"
+    @click="toggleColorMode"
   >
-    <slot :isDark="darkMode" />
-    <component
-      :is="'style'"
-      :media="darkMode && $_use_filter ? 'screen' : 'none'"
-      scoped
-      v-text="styles.trim()"
-    />
+    <span
+      class="visually-hidden"
+      aria-live="assertive"
+    >
+      {{ chosenMode }} color mode is enabled
+    </span>
+    <slot :mode="chosenMode" />
   </button>
 </template>
 
 <script>
-const styles = `
-  html {
-    background-color: #222 !important;
-    color: #333 !important;
-  }
-
-  body {
-    filter: contrast(90%) invert(90%) hue-rotate(180deg) !important;
-    -ms-filter: invert(100%);
-    -webkit-filter: contrast(90%) invert(90%) hue-rotate(180deg) !important;
-  }
-
-  input, textarea, select {
-    color: purple;
-  }
-
-  img, video, iframe, canvas, svg, embed[type='application/x-shockwave-flash'], object[type='application/x-shockwave-flash'], *[style*='url('] {
-    filter: invert(100%) hue-rotate(-180deg) !important;
-    -ms-filter: invert(100%) !important;
-    -webkit-filter: invert(100%) hue-rotate(-180deg) !important;
-  }
-`
-
 export default {
   name: 'DarkMode',
 
   props: {
-    isDark: {
-      type: Boolean,
-      default: false
-    },
-    useFilter: {
-      type: Boolean,
-      default: true
-    },
-    styles: {
+    defaultMode: {
       type: String,
-      default: styles
+      default: 'light'
     },
-    className: {
-      type: String,
-      default: 'dark-mode'
+    modes: {
+      type: Array,
+      default () {
+        return ['light', 'dark', 'system']
+      }
     },
-    persist: {
+    storage: {
       type: String,
       default: 'localStorage'
     },
-    themeColorLight: {
-      type: String,
-      default: '#f2f2f2'
-    },
-    themColorDark: {
-      type: String,
-      default: '#999'
+    mobileThemeColor: {
+      type: Object,
+      default () {
+        return {
+          light: '#f2f2f2',
+          dark: '#999'
+        }
+      }
     }
   },
 
   data () {
     return {
-      darkMode: false,
       themeColorMeta: null,
-      $_use_filter: false
+      chosenMode: null,
+      currentMode: null,
+      listenerDark: null
     }
   },
 
-  created () {
-    this.darkMode = this.isDark
-    if (!this.$isServer) {
-      this.darkMode = !!window[this.persist].getItem('darkMode') || this.isDark || this.prefersDark()
-      this.themeColorMeta = document.querySelector('meta[name="theme-color"]')
-      if (this.useFilter) {
-        this.$_use_filter = this.supportsFilters()
-      }
-      if (this.darkMode) this.setDarkMode()
+  computed: {
+    getPrefersColorScheme () {
+      const colorSchemeTypes = ['dark', 'light']
+      let colorScheme = null
+      colorSchemeTypes.forEach(type => {
+        if (this.getMediaQueryList(type).matches) {
+          colorScheme = type
+        }
+      })
+      return colorScheme
+    },
+
+    getNextMode () {
+      const currentIndex = this.modes.findIndex(mode => mode === this.chosenMode)
+      return this.modes[currentIndex === (this.modes.length - 1) ? 0 : currentIndex + 1]
+    },
+
+    getStorageColorMode () {
+      return window[this.storage].getItem('colorMode')
+    },
+
+    isSystem () {
+      return this.getStorageColorMode === 'system'
     }
+  },
+
+  beforeMount () {
+    if (this.getPrefersColorScheme && this.isSystem) {
+      this.currentMode = this.getPrefersColorScheme
+      return this.setMode('system')
+    }
+    const colorMode = this.getStorageColorMode || this.defaultMode
+    this.currentMode = colorMode
+    this.setMode(colorMode)
+  },
+
+  mounted () {
+    this.metaThemeColor = document.querySelector('meta[name="theme-color"]')
+    this.listenerDark = this.getMediaQueryList('dark')
+    this.listenerDark.addListener(this.handlePreferColorScheme)
+  },
+
+  beforeDestroy () {
+    this.listenerDark.removeListener(this.handlePreferColorScheme)
   },
 
   methods: {
-    supportsFilters () {
-      const div = document.createElement('div')
-      const isSupported = 'filter' in div.style
-      if (!isSupported) console.warn('CSS filter is not supported')
-      return isSupported
+    setMode (chosenMode) {
+      this.chosenMode = chosenMode
+      window[this.storage].setItem('colorMode', this.chosenMode)
+      this.handleClassList('add', `${this.currentMode}-mode`)
+      this.setMetaThemeColor(this.mobileThemeColor[this.currentMode] || this.mobileThemeColor[this.getPrefersColorScheme] || '#fff')
     },
 
-    prefersDark () {
-      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+    getMediaQueryList (type) {
+      return window.matchMedia(`(prefers-color-scheme: ${type})`)
     },
 
-    setThemeColor (color) {
-      if (this.themeColorMeta) return this.themeColorMeta.setAttribute('content', color)
+    setMetaThemeColor (color) {
+      this.$nextTick(() => {
+        if (this.metaThemeColor) this.metaThemeColor.setAttribute('content', color)
+      })
     },
 
-    toggleClass () {
-      document.documentElement.classList.toggle(this.className)
+    handleClassList (action, cls) {
+      return document.documentElement.classList[action](cls)
     },
 
-    setDarkMode () {
-      window[this.persist].setItem('darkMode', 'on')
-      this.toggleClass()
-      this.setThemeColor(this.themeColorDark)
+    handlePreferColorScheme (e) {
+      this.currentMode = this.isSystem && e.matches ? 'dark' : 'light'
+      this.handleClassList('remove', `${this.currentMode}-mode`)
+      this.setMode('system')
     },
 
-    removeDarkMode () {
-      window[this.persist].removeItem('darkMode')
-      this.toggleClass()
-      this.setThemeColor(this.themeColorLight)
-    },
-
-    toggleDarkMode () {
-      this.darkMode = !this.darkMode
-      if (this.darkMode) return this.setDarkMode()
-      this.removeDarkMode()
+    toggleColorMode () {
+      const selectedMode = this.getNextMode
+      this.handleClassList('remove', `${this.currentMode}-mode`)
+      this.currentMode = selectedMode === 'system' ? this.getPrefersColorScheme : selectedMode
+      this.setMode(selectedMode)
     }
   }
 }
 </script>
 
 <style>
-body {
-  text-rendering: optimizeSpeed;
-  image-rendering: optimizeSpeed;
-  -webkit-font-smoothing: antialiased;
-  -webkit-image-rendering: optimizeSpeed;
-}
-
 .vue-dark-mode {
   appearance: none;
   background-color: transparent;
   color: inherit;
   border: none;
   cursor: pointer;
+}
+
+.visually-hidden {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
 }
 </style>
