@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#fff">
   <title>Demo - Vue DarkMode</title>
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <script src="./vue-dark-mode.js"></script>
@@ -20,16 +21,6 @@
 
     a {
       color: #42B983;
-    }
-
-    .sr-only {
-      position: absolute;
-      clip: rect(1px, 1px, 1px, 1px);
-      height: 1px;
-      width: 1px;
-      margin: -1px;
-      overflow: hidden;
-      padding: 0;
     }
 
     .header {
@@ -73,8 +64,8 @@
       </h1>
       <div>
         <vue-dark-mode class="btn-darkmode">
-          <template v-slot="{ isDark }">
-            Dark mode: <span aria-hidden="true">{{ isDark ? 'on' : 'off' }}</span>
+          <template v-slot="{ mode }">
+            Color mode: <span aria-hidden="true">{{ mode }}</span>
           </template>
         </vue-dark-mode>
       </div>
@@ -98,6 +89,7 @@
     new Vue({
       el: '#app'
     })
+    Vue.config.devtools = true
   </script>
 </body>
 </html>
