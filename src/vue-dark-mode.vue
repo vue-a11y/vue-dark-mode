@@ -123,9 +123,11 @@ export default {
     },
 
     handlePreferColorScheme (e) {
-      this.currentMode = this.isSystem && e.matches ? 'dark' : 'light'
-      this.handleClassList('remove', `${this.currentMode}-mode`)
-      this.setMode('system')
+      if (this.isSystem) {
+        this.currentMode = e.matches ? 'dark' : 'light'
+        this.handleClassList('remove', `${this.currentMode}-mode`)
+        this.setMode('system')
+      }
     },
 
     toggleColorMode () {
