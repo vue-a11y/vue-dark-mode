@@ -1,16 +1,15 @@
 <template>
   <button
-    :aria-label="`toggle to ${getNextMode} mode color`"
-    :title="`toggle to ${getNextMode} mode color`"
+    :aria-label="getAriaLabel"
+    :title="getAriaLabel"
     class="vue-dark-mode"
     @click="toggleColorMode"
   >
     <span
       class="visually-hidden"
       aria-live="assertive"
-    >
-      {{ chosenMode }} color mode is enabled
-    </span>
+      v-text="getAriaLive"
+    />
     <slot :mode="chosenMode" />
   </button>
 </template>
@@ -37,6 +36,14 @@ export default {
     metaThemeColor: {
       type: Object,
       default: () => ({})
+    },
+    ariaLabel: {
+      type: String,
+      default: 'toggle to %cm mode color'
+    },
+    ariaLive: {
+      type: String,
+      default: '%cm color mode is enabled'
     }
   },
 
@@ -59,6 +66,14 @@ export default {
         }
       })
       return colorScheme
+    },
+
+    getAriaLabel () {
+      return this.ariaLabel.replace(/%cm/g, this.getNextMode)
+    },
+
+    getAriaLive () {
+      return this.ariaLive.replace(/%cm/g, this.chosenMode)
     },
 
     getNextMode () {
