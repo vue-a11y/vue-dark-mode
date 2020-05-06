@@ -34,20 +34,17 @@ export default {
       type: String,
       default: 'localStorage'
     },
-    mobileThemeColor: {
+    metaThemeColor: {
       type: Object,
       default () {
-        return {
-          light: '#f2f2f2',
-          dark: '#999'
-        }
+        return {}
       }
     }
   },
 
   data () {
     return {
-      themeColorMeta: null,
+      elementMetaThemeColor: null,
       chosenMode: null,
       currentMode: null,
       listenerDark: null
@@ -80,7 +77,7 @@ export default {
     }
   },
 
-  beforeMount () {
+  created () {
     if (this.getPrefersColorScheme && this.isSystem) {
       this.currentMode = this.getPrefersColorScheme
       return this.setMode('system')
@@ -91,7 +88,7 @@ export default {
   },
 
   mounted () {
-    this.metaThemeColor = document.querySelector('meta[name="theme-color"]')
+    this.elementMetaThemeColor = document.querySelector('meta[name="theme-color"]')
     this.listenerDark = this.getMediaQueryList('dark')
     this.listenerDark.addListener(this.handlePreferColorScheme)
   },
@@ -104,8 +101,8 @@ export default {
     setMode (chosenMode) {
       this.chosenMode = chosenMode
       window[this.storage].setItem('colorMode', this.chosenMode)
-      this.handleClassList('add', `${this.currentMode}-mode`)
-      this.setMetaThemeColor(this.mobileThemeColor[this.currentMode] || this.mobileThemeColor[this.getPrefersColorScheme] || '#fff')
+      this.handleColorModeClass('add')
+      this.setMetaThemeColor(this.metaThemeColor[this.currentMode] || this.metaThemeColor[this.getPrefersColorScheme] || '#fff')
     },
 
     getMediaQueryList (type) {
@@ -114,25 +111,25 @@ export default {
 
     setMetaThemeColor (color) {
       this.$nextTick(() => {
-        if (this.metaThemeColor) this.metaThemeColor.setAttribute('content', color)
+        if (this.elementMetaThemeColor) this.elementMetaThemeColor.setAttribute('content', color)
       })
     },
 
-    handleClassList (action, cls) {
-      return document.documentElement.classList[action](cls)
+    handleColorModeClass (action, cls) {
+      return document.documentElement.classList[action](`${this.currentMode}-mode`)
     },
 
     handlePreferColorScheme (e) {
       if (this.isSystem) {
         this.currentMode = e.matches ? 'dark' : 'light'
-        this.handleClassList('remove', `${this.currentMode}-mode`)
+        this.handleColorModeClass('remove')
         this.setMode('system')
       }
     },
 
     toggleColorMode () {
       const selectedMode = this.getNextMode
-      this.handleClassList('remove', `${this.currentMode}-mode`)
+      this.handleColorModeClass('remove')
       this.currentMode = selectedMode === 'system' ? this.getPrefersColorScheme : selectedMode
       this.setMode(selectedMode)
     }
