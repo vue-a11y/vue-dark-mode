@@ -36,9 +36,7 @@ export default {
     },
     metaThemeColor: {
       type: Object,
-      default () {
-        return {}
-      }
+      default: () => ({})
     }
   },
 
@@ -102,7 +100,7 @@ export default {
       this.chosenMode = chosenMode
       window[this.storage].setItem('colorMode', this.chosenMode)
       this.handleColorModeClass('add')
-      this.setMetaThemeColor(this.metaThemeColor[this.currentMode] || this.metaThemeColor[this.getPrefersColorScheme] || '#fff')
+      if (Object.keys(this.metaThemeColor).length) this.setMetaThemeColor(this.metaThemeColor[this.currentMode] || this.metaThemeColor[this.getPrefersColorScheme])
     },
 
     getMediaQueryList (type) {
@@ -110,9 +108,11 @@ export default {
     },
 
     setMetaThemeColor (color) {
-      this.$nextTick(() => {
-        if (this.elementMetaThemeColor) this.elementMetaThemeColor.setAttribute('content', color)
-      })
+      if (color) {
+        this.$nextTick(() => {
+          if (this.elementMetaThemeColor) this.elementMetaThemeColor.setAttribute('content', color)
+        })
+      }
     },
 
     handleColorModeClass (action, cls) {
