@@ -130,14 +130,14 @@ export default {
       }
     },
 
-    handleColorModeClass (action, cls) {
+    handleColorModeClass (action) {
       return document.documentElement.classList[action](`${this.currentMode}-mode`)
     },
 
     handlePreferColorScheme (e) {
       if (this.isSystem) {
-        this.currentMode = e.matches ? 'dark' : 'light'
         this.handleColorModeClass('remove')
+        this.currentMode = e.matches ? 'dark' : 'light'
         this.setMode('system')
       }
     },
