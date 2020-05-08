@@ -1,10 +1,10 @@
-import vue from 'rollup-plugin-vue'
-import serve from 'rollup-plugin-serve'
-import livereload from 'rollup-plugin-livereload'
-import buble from 'rollup-plugin-buble'
-import { eslint } from 'rollup-plugin-eslint'
-import chokidar from 'chokidar'
+import buble from '@rollup/plugin-buble'
 import resolve from '@rollup/plugin-node-resolve'
+import chokidar from 'chokidar'
+import { eslint } from 'rollup-plugin-eslint'
+import livereload from 'rollup-plugin-livereload'
+import serve from 'rollup-plugin-serve'
+import vue from 'rollup-plugin-vue'
 
 export default {
   input: 'src/index.js',
