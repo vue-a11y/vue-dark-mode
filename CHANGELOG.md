@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](https://github.com/vue-a11y/vue-dark-mode/compare/v0.1.2...v0.1.3) (2020-05-08)
+
+
+### Bug Fixes
+
+* Update rollup plugins and build for production ([d540257](https://github.com/vue-a11y/vue-dark-mode/commit/d5402571432c216b5882c29e6ca48f363b693b1c))
+
 ### 0.1.2 (2020-05-08)
 
 
