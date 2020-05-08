@@ -1,0 +1,3 @@
+# Favicon
+
+Coming soon

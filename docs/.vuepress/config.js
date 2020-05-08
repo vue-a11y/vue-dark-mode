@@ -1,11 +1,16 @@
 module.exports = {
   title: 'Vue dark-mode',
   description: '',
-  serviceWorker: true,  
+  serviceWorker: true,
+  head: [
+    ['meta', { name: 'theme-color', content: '#fff' }],
+  ],
   themeConfig: {
     home: false,
     repo: 'vue-a11y/vue-dark-mode',
     docsDir: 'docs',
+    docsBranch: 'master',
+    editLinks: true,
     locales: {
       '/': {
         editLinkText: 'Edit this page on GitHub',
@@ -16,7 +21,7 @@ module.exports = {
           },
           {
             text: 'How to',
-            link: '/demos/'
+            link: '/howto/'
           }
         ],
         sidebar: [
@@ -26,22 +31,21 @@ module.exports = {
             collapsable: false,
             children: [
               '/guide/',
-              '/guide/no-filter.md',
-              '/guide/own-style.md',
+              '/guide/modes.md',
               '/guide/storage.md',
               '/guide/meta-theme-color.md',
-              '/guide/accessibility.md'
+              '/guide/accessibility.md',
+              '/guide/examples.md'
             ]
           },
           {
             title: 'How to',
             collapsable: false,
             children: [
-              '/demos/cdn.md',
-              '/demos/spa-vue.md',
-              '/demos/nuxt.md',
-              '/demos/vuepress.md',
-              '/demos/tailwind.md'
+              '/howto/cdn.md',
+              '/howto/nuxt.md',
+              '/howto/vuepress.md',
+              '/howto/tailwind.md'
             ]
           }
         ]
