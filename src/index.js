@@ -1,4 +1,4 @@
-import VueDarkMode from './vue-dark-mode.vue'
+import VueDarkMode from './VueDarkMode.vue'
 
 export default function install (Vue) {
   if (install.installed) return
