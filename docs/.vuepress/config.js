@@ -31,6 +31,7 @@ module.exports = {
             collapsable: false,
             children: [
               '/guide/',
+              '/guide/class-naming.md',
               '/guide/modes.md',
               '/guide/storage.md',
               '/guide/meta-theme-color.md',

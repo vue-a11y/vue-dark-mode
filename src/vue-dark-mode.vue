@@ -29,6 +29,10 @@ export default {
         return ['light', 'dark', 'system']
       }
     },
+    className: {
+      type: String,
+      default: '%cm-mode'
+    },
     storage: {
       type: String,
       default: 'localStorage'
@@ -131,7 +135,7 @@ export default {
     },
 
     handleColorModeClass (action) {
-      return document.documentElement.classList[action](`${this.currentMode}-mode`)
+      return document.documentElement.classList[action](`${this.className.replace(/%cm/g, this.currentMode)}`)
     },
 
     handlePreferColorScheme (e) {
