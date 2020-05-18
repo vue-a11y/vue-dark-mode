@@ -35,12 +35,12 @@ export default {
 :root 
   --bg: #fff
   --bg-secondary: #f2f2f2
-  --bg-search: #fff
+  --bg-search: #f2f2f2
   --bg-code: #f2f2f2
   --bg-warning: #fff7d0
   --color: #304455
   --code-color: #476582
-  --link-color: #3eaf7c
+  --link-color: #2E8465
   --border-color: #eaecef
   background-color: var(--bg) !important
 
@@ -52,7 +52,7 @@ html.dark-mode
   --bg-warning: #575638
   --color: #ddd8ca
   --code-color: #ADCFF0
-  --link-color: #68CA9E
+  --link-color: #82D3AF
   --border-color: #AEB8BC
   background-color: var(--bg) !important
 
@@ -82,8 +82,8 @@ div[class*="language-"] code
   color: inherit !important
 
 .search-box input 
-  background-color: inherit !important
-  color: inherit !important
+  background-color: var(--bg) !important
+  color: var(--color) !important
 
 .custom-block.warning
   color: var(--color) !important
@@ -94,7 +94,7 @@ div[class*="language-"] code
 
 .box-color-mode
   width: 100%
-  padding: 10px 10px 50px 20rem
+  padding: 10px 10px 100px 20rem
   display: flex
   justify-content: center
   box-sizing: border-box
@@ -107,4 +107,9 @@ div[class*="language-"] code
     font-weight: bold
     span
       text-transform: capitalize
+
+@media only screen and (max-width: 728px)
+  .box-color-mode
+    padding-left: 10px
+
 </style>

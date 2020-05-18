@@ -47,18 +47,3 @@ body {
 }
 </style>
 ```
-
-## Class naming
-
-The class for deciding the color mode is inserted in the HTML tag. `${color}-mode`
-
-e.g.
-
-```html
-<!DOCTYPE html>
-<html lang="en" class="light-mode">
-<head>
-  <meta charset="UTF-8">
-...
-```
-
