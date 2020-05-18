@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/vue-a11y/vue-dark-mode/compare/v0.1.3...v0.2.0) (2020-05-18)
+
+
+### Features
+
+* Custom color-mode className ([30a43b5](https://github.com/vue-a11y/vue-dark-mode/commit/30a43b5f55f509b0f5b13abe54a382078a7a77ce))
+
 ### [0.1.3](https://github.com/vue-a11y/vue-dark-mode/compare/v0.1.2...v0.1.3) (2020-05-08)
 
 
