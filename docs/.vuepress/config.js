@@ -1,6 +1,6 @@
 module.exports = {
   title: 'Vue dark-mode',
-  description: '',
+  description: 'A component that helps to implement dark mode and other color modes in your Vue application.',
   serviceWorker: true,
   head: [
     ['meta', { name: 'theme-color', content: '#fff' }],
