@@ -31,8 +31,8 @@
 ```vue
 <vue-dark-mode>
   <template v-slot="{ mode }">
-    <MyLightIcon v-show="mode === 'dark'">
-    <MyDarkIcon v-show="mode === 'light'">
+    <MyLightIcon v-show="mode === 'light'">
+    <MyDarkIcon v-show="mode === 'dark'">
     <MySystemIcon v-show="mode === 'system'">
   </template>
 </vue-dark-mode>
