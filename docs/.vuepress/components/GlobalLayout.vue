@@ -1,21 +1,44 @@
 <template>
   <div id="global-layout">
+    <ClientOnly>
+      <VueAnnouncer />
+      <MountingPortal v-if="show" name="colorMode" mountTo=".nav-links" targetSlim append>
+        <div class="nav-item">
+          <VueDarkMode 
+            data-cy="color-mode-button" 
+            class="btn-color-mode"
+          >
+            <template v-slot="{ mode }">
+              Color mode: <span data-cy="color-mode">{{ mode }}</span>
+            </template>
+          </VueDarkMode>
+        </div>
+      </MountingPortal>
+    </ClientOnly>
     <component :is="layout"/>
-    <div class="box-color-mode">
-      <ClientOnly>
-        <VueDarkMode data-cy="color-mode-button" class="btn-color-mode">
-          <template v-slot="{ mode }">
-            Color mode: <span>{{ mode }}</span>
-          </template>
-        </VueDarkMode>
-      </ClientOnly>
-    </div>
   </div>
 </template>
 
 <script>
+import { MountingPortal } from 'portal-vue'
+
 export default {
   name: 'GlobalLayout',
+
+  components: {
+    MountingPortal
+  },
+
+  data: () => ({
+    show: false
+  }),
+
+  mounted () {
+    setTimeout(() => {
+      this.show = true
+    }, 100)
+  },
+
   computed: {
     layout () {
       if (this.$page.path) {
@@ -29,13 +52,6 @@ export default {
 </script>
 
 <style lang="stylus">
-.box-color-mode
-  width: 100%
-  padding: 10px 10px 100px 20rem
-  display: flex
-  justify-content: center
-  box-sizing: border-box
-
 .btn-color-mode
   &.vue-dark-mode
     border: 2px solid #666
@@ -44,9 +60,4 @@ export default {
     font-weight: bold
     span
       text-transform: capitalize
-
-@media only screen and (max-width: 728px)
-  .box-color-mode
-    padding-left: 10px
-
 </style>

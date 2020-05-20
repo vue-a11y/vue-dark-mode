@@ -14,7 +14,7 @@
     "build:umd": "rollup --config rollup.config.prod.js --format umd --file dist/vue-dark-mode.umd.js",
     "build:es": "rollup --config rollup.config.prod.js --format es --file dist/vue-dark-mode.esm.js",
     "build:unpkg": "rollup --config rollup.config.prod.js --format iife --file dist/vue-dark-mode.min.js",
-    "docs": "vuepress dev docs",
+    "docs": "vuepress dev docs --temp .temp",
     "docs:build": "vuepress build docs --no-cache",
     "docs:publish": "surge docs/.vuepress/dist https://vue-dark-mode.surge.sh",
     "release": "standard-version",
@@ -70,6 +70,7 @@
     "eslint-plugin-vue-a11y": "0.0.31",
     "eslint-plugin-vuejs-accessibility": "^0.1.1",
     "jest": "^24.9.0",
+    "portal-vue": "^2.1.7",
     "rollup": "^1.29.0",
     "rollup-plugin-eslint": "^7.0.0",
     "rollup-plugin-livereload": "^1.0.4",
@@ -82,5 +83,8 @@
     "vue-template-compiler": "^2.6.11",
     "vuepress": "^1.3.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@vue-a11y/announcer": "^2.0.2",
+    "vue-skip-to": "^1.0.6"
+  }
 }

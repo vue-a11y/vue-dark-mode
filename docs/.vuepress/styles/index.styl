@@ -22,41 +22,42 @@ html.dark-mode
   --color: #ddd8ca
   --code-color: #ADCFF0
   --link-color: #82D3AF
-  --border-color: #AEB8BC
+  --border-color: #565656
   background-color: var(--bg) !important
 
 body 
   background-color: var(--bg) !important
   color: var(--color) !important
 
-a, .edit-link > a 
-  color: var(--link-color) !important
+#global-layout
+  a, .edit-link > a 
+    color: var(--link-color)
 
-.navbar, .sidebar, .links, .site-name, .sidebar-link, .nav-link 
-  background-color: var(--bg) !important
-  color: var(--color) !important
+  .navbar, .sidebar, .links, .site-name, .sidebar-link, .nav-link 
+    background-color: var(--bg)
+    color: var(--color)
 
-.navbar, .sidebar 
-  border-color: var(--border-color) !important;
+  .navbar, .sidebar 
+    border-color: var(--border-color);
 
-.dark-mode div[class*="language-"], .custom-block.tip 
-  background-color: var(--bg-secondary) !important
+  .dark-mode div[class*="language-"], .custom-block.tip 
+    background-color: var(--bg-secondary)
 
-.page code 
-  background-color: var(--bg-code) !important
-  color: var(--code-color) !important
+  .page code 
+    background-color: var(--bg-code)
+    color: var(--code-color)
 
-div[class*="language-"] code 
-  background-color: inherit !important
-  color: inherit !important
+  div[class*="language-"] code 
+    background-color: inherit
+    color: inherit
 
-.search-box input 
-  background-color: var(--bg) !important
-  color: var(--color) !important
+  .search-box input 
+    background-color: var(--bg)
+    color: var(--color)
 
-.custom-block.warning
-  color: var(--color) !important
-  background-color: var(--bg-warning) !important
+  .custom-block.warning
+    color: var(--color)
+    background-color: var(--bg-warning)
 
-  .custom-block-title
-    color: inherit !important
+    .custom-block-title
+      color: inherit
