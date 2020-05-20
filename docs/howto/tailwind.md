@@ -4,7 +4,7 @@ By default, [tailwindcss-dark-mode](https://github.com/ChanceArthur/tailwindcss-
 
 It is possible to [changing the Selector](https://github.com/ChanceArthur/tailwindcss-dark-mode#changing-the-selector) in "tailwindcss-dark-mode" plug-in, however, you can also adjust the class using the [className](/guide/class-naming.html) prop to generate the class compatible with the plugin.
 
-e.g.
+**e.g.**
 
 ```vue
 <VueDarkMode className="mode-%cm">
@@ -13,6 +13,9 @@ e.g.
   </template>
 </VueDarkMode>
 ```
+
+
+**Output**
 
 ```html
 <!DOCTYPE html>
