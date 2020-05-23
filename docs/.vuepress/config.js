@@ -1,4 +1,5 @@
 module.exports = {
+  theme: 'vuepress-theme-default-vue-a11y',
   title: 'Vue dark-mode',
   description: 'A component that helps to implement dark mode and other color modes in your Vue application.',
   serviceWorker: true,
@@ -11,6 +12,11 @@ module.exports = {
     docsDir: 'docs',
     docsBranch: 'master',
     editLinks: true,
+    colorMode: {
+      props: {
+        modes: ['light', 'dark', 'system', 'sepia']
+      }
+    },
     locales: {
       '/': {
         editLinkText: 'Edit this page on GitHub',
