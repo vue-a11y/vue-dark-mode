@@ -14,8 +14,8 @@
     "build:umd": "rollup --config rollup.config.prod.js --format umd --file dist/vue-dark-mode.umd.js",
     "build:es": "rollup --config rollup.config.prod.js --format es --file dist/vue-dark-mode.esm.js",
     "build:unpkg": "rollup --config rollup.config.prod.js --format iife --file dist/vue-dark-mode.min.js",
-    "docs": "vuepress dev docs --temp .temp",
-    "docs:build": "vuepress build docs --no-cache",
+    "docs": "vuepress dev docs --no-cache",
+    "docs:build": "vuepress build docs --no-cache && echo darkmode.vue-a11y.com >> docs/.vuepress/dist/CNAME",
     "docs:publish": "gh-pages -d docs/.vuepress/dist",
     "release": "standard-version",
     "test:unit": "jest",
@@ -83,10 +83,8 @@
     "vue": "^2.6.11",
     "vue-template-compiler": "^2.6.11",
     "vuepress": "^1.3.1",
-    "vuepress-theme-default-vue-a11y": "^0.1.8"
+    "vuepress-theme-default-vue-a11y": "^0.1.11",
+    "watchpack": "^1.6.1"
   },
-  "dependencies": {
-    "@vue-a11y/announcer": "^2.0.2",
-    "vue-skip-to": "^1.0.6"
-  }
+  "dependencies": {}
 }
