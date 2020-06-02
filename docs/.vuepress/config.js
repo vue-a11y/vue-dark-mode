@@ -49,7 +49,7 @@ module.exports = {
             title: 'How to',
             collapsable: false,
             children: [
-              '/howto/cdn.md',
+              '/howto/',
               '/howto/nuxt.md',
               '/howto/vuepress.md',
               '/howto/tailwind.md'
