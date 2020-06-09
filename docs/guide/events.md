@@ -10,11 +10,11 @@ Event fired every color mode change.
 | `change-mode`  | color mode token. (`light` \| `dark` \| `system` \| `myCustomMode`)  | 
 
 ```vue
-<VueDarkMode @change-mode="myColorModeHandler">
+<DarkMode @change-mode="myColorModeHandler">
   <template v-slot="{ mode }">
     Color mode: {{ mode }}
   </template>
-</VueDarkMode>
+</DarkMode>
 ```
 
 ```js

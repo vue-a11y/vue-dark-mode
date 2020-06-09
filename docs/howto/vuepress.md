@@ -20,10 +20,10 @@ VuePress applications are rendered by the server in Node.js when generating stat
 
 ```vue
 <ClientOnly>
-  <VueDarkMode>
+  <DarkMode>
     <template v-slot="{ mode }">
       Color mode: <span>{{ mode }}</span>
     </template>
-  </VueDarkMode>
+  </DarkMode>
 </ClientOnly>
 ```

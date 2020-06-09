@@ -7,11 +7,11 @@ It is possible to [changing the Selector](https://github.com/ChanceArthur/tailwi
 **e.g.**
 
 ```vue
-<VueDarkMode className="mode-%cm">
+<DarkMode className="mode-%cm">
   <template v-slot="{ mode }">
     Color mode: {{ mode }}
   </template>
-</VueDarkMode>
+</DarkMode>
 ```
 
 

@@ -27,11 +27,11 @@ You can also customize the class name.
 **e.g.**
 
 ```vue
-<VueDarkMode className="%cm-theme">
+<DarkMode className="%cm-theme">
   <template v-slot="{ mode }">
     Color mode: {{ mode }}
   </template>
-</VueDarkMode>
+</DarkMode>
 ```
 
 **Output:**

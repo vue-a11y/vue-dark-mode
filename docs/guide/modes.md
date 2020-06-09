@@ -33,7 +33,7 @@ Both props are optional, if not declared in the component, default values will b
 :::
 
 ```vue
-<VueDarkMode 
+<DarkMode 
   defaultMode="sepia"
   :modes="[
     'light',
@@ -45,6 +45,6 @@ Both props are optional, if not declared in the component, default values will b
   <template v-slot="{ mode }">
     Color mode: {{ mode }}
   </template>
-</VueDarkMode>
+</DarkMode>
 ```
 

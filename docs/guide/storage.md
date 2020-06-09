@@ -7,11 +7,11 @@ By default the `@vue-a11y/dark-mode` component use **localStorage** to store the
 | `storage`    | String    | `localStorage` | `localStorage` or `sessionStorage`            
 
 ```vue
-<VueDarkMode storage="sessionStorage">
+<DarkMode storage="sessionStorage">
   <template v-slot="{ mode }">
     Color mode: {{ mode }}
   </template>
-</VueDarkMode>
+</DarkMode>
 ```
 
 ::: tip

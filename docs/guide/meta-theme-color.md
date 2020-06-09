@@ -14,7 +14,7 @@ Since `system` assumes light or dark, then you do not need to define theme-color
 :::
 
 ```vue
-<VueDarkMode 
+<DarkMode 
   :metaThemeColor="{
     light: '#f2f2f2 ',
     dark: '#232b32',
@@ -29,5 +29,5 @@ Since `system` assumes light or dark, then you do not need to define theme-color
   <template v-slot="{ mode }">
     Color mode: {{ mode }}
   </template>
-</VueDarkMode>
+</DarkMode>
 ```
