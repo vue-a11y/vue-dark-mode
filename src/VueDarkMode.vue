@@ -162,6 +162,8 @@ export default {
 <style>
 .vue-dark-mode {
   appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   background-color: transparent;
   color: inherit;
   border: none;
