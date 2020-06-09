@@ -62,6 +62,7 @@ export default {
 
   computed: {
     getPrefersColorScheme () {
+      if (this.$isServer) return false
       const colorSchemeTypes = ['dark', 'light']
       let colorScheme = null
       colorSchemeTypes.forEach(type => {
@@ -120,6 +121,7 @@ export default {
       window[this.storage].setItem('colorMode', this.chosenMode)
       this.handleColorModeClass('add')
       if (Object.keys(this.metaThemeColor).length) this.setMetaThemeColor(this.metaThemeColor[this.currentMode] || this.metaThemeColor[this.getPrefersColorScheme])
+      this.$emit('change-mode', this.chosenMode)
     },
 
     getMediaQueryList (type) {
@@ -135,6 +137,7 @@ export default {
     },
 
     handleColorModeClass (action) {
+      if (this.$isServer) return
       return document.documentElement.classList[action](`${this.className.replace(/%cm/g, this.currentMode)}`)
     },
 

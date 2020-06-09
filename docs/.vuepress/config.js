@@ -39,6 +39,7 @@ module.exports = {
               '/guide/',
               '/guide/class-naming.md',
               '/guide/modes.md',
+              '/guide/events.md',
               '/guide/storage.md',
               '/guide/meta-theme-color.md',
               '/guide/accessibility.md',
