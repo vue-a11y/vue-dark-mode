@@ -6,7 +6,7 @@
   "module": "dist/vue-dark-mode.esm.js",
   "unpkg": "dist/vue-dark-mode.min.js",
   "browser": {
-    "./sfc": "src/vue-dark-mode.vue"
+    "./sfc": "src/DarkMode.vue"
   },
   "scripts": {
     "dev": "rollup --config rollup.config.dev.js --watch",

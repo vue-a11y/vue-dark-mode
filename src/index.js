@@ -1,12 +1,4 @@
-import VueDarkMode from './VueDarkMode.vue'
+import VueDarkMode from './plugin'
 
-export default function install (Vue) {
-  if (install.installed) return
-  install.installed = true
-  Vue.component('VueDarkMode', VueDarkMode)
-}
-
-// auto install
-if (typeof window !== 'undefined' && typeof window.Vue !== 'undefined') {
-  window.Vue.use(install)
-}
+export default VueDarkMode
+export { default as DarkMode } from './DarkMode.vue'
