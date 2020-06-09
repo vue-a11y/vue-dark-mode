@@ -5,6 +5,7 @@ module.exports = {
   serviceWorker: true,
   head: [
     ['meta', { name: 'theme-color', content: '#fff' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }]
   ],
   themeConfig: {
     home: false,
@@ -41,6 +42,7 @@ module.exports = {
               '/guide/modes.md',
               '/guide/events.md',
               '/guide/storage.md',
+              '/guide/favicon.md',
               '/guide/meta-theme-color.md',
               '/guide/accessibility.md',
               '/guide/examples.md'

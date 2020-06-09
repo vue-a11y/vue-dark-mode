@@ -48,15 +48,19 @@ export default {
     ariaLive: {
       type: String,
       default: '%cm color mode is enabled'
+    },
+    favicon: {
+      type: Boolean,
+      default: true
     }
   },
 
   data () {
     return {
-      elementMetaThemeColor: null,
       chosenMode: null,
       currentMode: null,
-      listenerDark: null
+      listenerDark: null,
+      metaThemeColorElement: null
     }
   },
 
@@ -106,9 +110,10 @@ export default {
   },
 
   mounted () {
-    this.elementMetaThemeColor = document.querySelector('meta[name="theme-color"]')
+    this.metaThemeColorElement = document.querySelector('meta[name="theme-color"]')
     this.listenerDark = this.getMediaQueryList('dark')
     this.listenerDark.addListener(this.handlePreferColorScheme)
+    this.toggleFavicon(this.getPrefersColorScheme)
   },
 
   beforeDestroy () {
@@ -131,9 +136,21 @@ export default {
     setMetaThemeColor (color) {
       if (color) {
         this.$nextTick(() => {
-          if (this.elementMetaThemeColor) this.elementMetaThemeColor.setAttribute('content', color)
+          if (this.metaThemeColorElement) this.metaThemeColorElement.setAttribute('content', color)
         })
       }
+    },
+
+    toggleFavicon (mode) {
+      if (!this.favicon) return
+      this.$nextTick(() => {
+        const favicon = document.querySelector('link[rel="icon"]')
+        if (!favicon) return
+        const href = favicon.getAttribute('href')
+        const lastFour = href.substr(-4, 4)
+        const favDarkStr = `-dark${lastFour}`
+        favicon.setAttribute('href', mode === 'light' ? href.replace(favDarkStr, lastFour) : href.replace(lastFour, favDarkStr))
+      })
     },
 
     handleColorModeClass (action) {
@@ -142,9 +159,11 @@ export default {
     },
 
     handlePreferColorScheme (e) {
+      const colorMatch = e.matches ? 'dark' : 'light'
+      this.toggleFavicon(colorMatch)
       if (this.isSystem) {
         this.handleColorModeClass('remove')
-        this.currentMode = e.matches ? 'dark' : 'light'
+        this.currentMode = colorMatch
         this.setMode('system')
       }
     },
