@@ -36,6 +36,7 @@ export default {
     },
     className: {
       type: String,
+      validator: str => str.includes('%cm'),
       default: '%cm-mode'
     },
     storage: {
@@ -52,10 +53,12 @@ export default {
     },
     ariaLabel: {
       type: String,
+      validator: str => str.includes('%cm'),
       default: 'toggle to %cm mode color'
     },
     ariaLive: {
       type: String,
+      validator: str => str.includes('%cm'),
       default: '%cm color mode is enabled'
     },
     favicon: {
