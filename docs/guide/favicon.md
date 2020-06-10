@@ -31,7 +31,7 @@ e.g.
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 ```
 
-If the user has defined in his `dark` operating system as color mode preference for applications. `@vue-a11y/dark-mode` will identify and make the change to your favicon.
+If the user has defined in his `dark` operating system as color mode preference for applications, `@vue-a11y/dark-mode` will identify and make the change to your favicon.
 
 e.g.
 
