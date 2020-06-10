@@ -14,8 +14,8 @@ Dark mode or any other color mode are excellent alternatives for the user of you
 
 ## Links
 
-- [Documentation](https://vue-dark-mode.surge.sh)
-- [Examples](https://vue-dark-mode.surge.sh/guide/examples.html)
+- [Documentation](https://darkmode.vue-a11y.com)
+- [Demo](https://vue-dark-mode.surge.sh)
 
 ## Contributing
 - From typos in documentation to coding new features;
