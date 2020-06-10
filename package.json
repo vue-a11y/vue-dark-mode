@@ -6,6 +6,7 @@
   "browser": "dist/vue-dark-mode.esm.js",
   "module": "dist/vue-dark-mode.esm.js",
   "unpkg": "dist/vue-dark-mode.min.js",
+  "types": "index.d.ts",
   "scripts": {
     "dev": "rollup --config rollup.config.dev.js --watch",
     "build": "npm run build:ssr & npm run build:es & npm run build:unpkg",
