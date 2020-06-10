@@ -2,9 +2,9 @@
 
 By default the `@vue-a11y/dark-mode` component use **localStorage** to store the user's choice of color mode.
 
-| Prop         | Type      | Default        | Options            
-| ------------ | --------- | -------------  | -------------------
-| `storage`    | String    | `localStorage` | `localStorage` or `sessionStorage`            
+| Prop         | Type                | Default       
+| ------------ | ------------------- | ----------------
+| `storage`    | String \| Object    | `localStorage`
 
 ```vue
 <DarkMode storage="sessionStorage">
@@ -15,5 +15,5 @@ By default the `@vue-a11y/dark-mode` component use **localStorage** to store the
 ```
 
 ::: tip
-Currently, the component does not support the use of cookies (essential for use with SSR).
+See more about using `cookies` on storage to [support SSR](/howto/ssr.html)
 :::

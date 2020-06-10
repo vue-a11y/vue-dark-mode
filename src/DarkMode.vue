@@ -40,6 +40,10 @@ export default {
     },
     storage: {
       type: [String, Object],
+      validator: storage => {
+        if (typeof storage === 'string') return ['localStorage', 'sessionStorage'].includes(storage)
+        return Object.keys(storage).every(key => ['getItem', 'setItem'].includes(key))
+      },
       default: 'localStorage'
     },
     metaThemeColor: {
@@ -96,10 +100,13 @@ export default {
     },
 
     getStorage () {
+      if (typeof this.storage !== 'string') return this.storage
+      if (this.$isServer) return false
       return storage(this.storage)
     },
 
     getStorageColorMode () {
+      if (!this.getStorage) return this.defaultMode
       return this.getStorage.getItem('colorMode')
     },
 
@@ -132,7 +139,7 @@ export default {
   methods: {
     setMode (chosenMode) {
       this.chosenMode = chosenMode
-      this.getStorage.setItem('colorMode', this.chosenMode)
+      if (this.getStorage) this.getStorage.setItem('colorMode', this.chosenMode)
       this.handleColorModeClass('add')
       if (Object.keys(this.metaThemeColor).length) this.setMetaThemeColor(this.metaThemeColor[this.currentMode] || this.metaThemeColor[this.getPrefersColorScheme])
       this.$emit('change-mode', this.chosenMode)
@@ -159,8 +166,9 @@ export default {
     },
 
     handleColorModeClass (action) {
-      if (this.$isServer) return
-      return document.documentElement.classList[action](`${this.className.replace(/%cm/g, this.currentMode)}`)
+      const className = `${this.className.replace(/%cm/g, this.currentMode)}`
+      if (!this.$isServer) return document.documentElement.classList[action](className)
+      this.$ssrContext.colorModeClass = this.currentMode === 'system' ? '' : className // Adds the className in the ssr context for the user to insert as they wish in the HTML tag
     },
 
     handlePreferColorScheme (e) {

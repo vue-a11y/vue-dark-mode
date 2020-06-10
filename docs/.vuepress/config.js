@@ -53,6 +53,7 @@ module.exports = {
             collapsable: false,
             children: [
               '/howto/',
+              '/howto/ssr.md',
               '/howto/nuxt.md',
               '/howto/vuepress.md',
               '/howto/tailwind.md'

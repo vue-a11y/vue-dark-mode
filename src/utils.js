@@ -1,5 +1,4 @@
 export const storage = storage => {
-  if (typeof storage !== 'string') return storage
   return {
     getItem: key => window[storage].getItem(key),
     setItem: (key, value) => window[storage].setItem(key, value)
