@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/vue-a11y/vue-dark-mode/compare/v0.2.0...v1.0.0) (2020-06-10)
+
+
+### Features
+
+* 'change-mode' event when chosen a new color mode ([8fa7193](https://github.com/vue-a11y/vue-dark-mode/commit/8fa7193238e493f4ec66358344f252c3ca05d89b))
+* Adds SSR support ([18a1e61](https://github.com/vue-a11y/vue-dark-mode/commit/18a1e61a7af604c61de7813ce66354cdbcb27276))
+* Allow to import the component individually ([526d0f9](https://github.com/vue-a11y/vue-dark-mode/commit/526d0f9131f862157ab74e95704d586d9dffefb3))
+* Support to custom storage ([4aaf1fb](https://github.com/vue-a11y/vue-dark-mode/commit/4aaf1fbcafeacc4ed26b73ccbb2137f8ca51cd9d))
+* Toggle favicon by prefer-color-scheme ([987a555](https://github.com/vue-a11y/vue-dark-mode/commit/987a555ea23c3be696ad7b884b461e42c5239701))
+
+
+### Bug Fixes
+
+* If system set colorMode preference in storage to use in SSR ([22e99cc](https://github.com/vue-a11y/vue-dark-mode/commit/22e99cc0fb6a0bd6c0bd2a0d68f2d6cb3ed6331e))
+* Set type in package.json ([9fb4aa7](https://github.com/vue-a11y/vue-dark-mode/commit/9fb4aa79d8031da6b636c13b291f2506e3549283))
+* **docs:** Path to how to CDN ([9b24257](https://github.com/vue-a11y/vue-dark-mode/commit/9b2425758dca275684a404df665ff0182abb30b7))
+* **styles:** Add webkit and moz prefix to appearance button ([7b02fd1](https://github.com/vue-a11y/vue-dark-mode/commit/7b02fd1ee2af36764a6a5eabb972e870ac6e0caf))
+
 ## [0.2.0](https://github.com/vue-a11y/vue-dark-mode/compare/v0.1.3...v0.2.0) (2020-05-18)
 
 
