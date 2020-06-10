@@ -78,7 +78,7 @@ export default {
 
   computed: {
     getPrefersColorScheme () {
-      if (this.$isServer) return false
+      if (this.$isServer) return this.getStorage.getItem('colorModePrefer')
       const colorSchemeTypes = ['dark', 'light']
       let colorScheme = null
       colorSchemeTypes.forEach(type => {
@@ -142,7 +142,10 @@ export default {
   methods: {
     setMode (chosenMode) {
       this.chosenMode = chosenMode
-      if (this.getStorage) this.getStorage.setItem('colorMode', this.chosenMode)
+      if (this.getStorage) {
+        this.getStorage.setItem('colorMode', this.chosenMode)
+        if (this.chosenMode === 'system') this.getStorage.setItem('colorModePrefer', this.getPrefersColorScheme)
+      }
       this.handleColorModeClass('add')
       if (Object.keys(this.metaThemeColor).length) this.setMetaThemeColor(this.metaThemeColor[this.currentMode] || this.metaThemeColor[this.getPrefersColorScheme])
       this.$emit('change-mode', this.chosenMode)
@@ -171,7 +174,7 @@ export default {
     handleColorModeClass (action) {
       const className = `${this.className.replace(/%cm/g, this.currentMode)}`
       if (!this.$isServer) return document.documentElement.classList[action](className)
-      this.$ssrContext.colorModeClass = this.currentMode === 'system' ? '' : className // Adds the className in the ssr context for the user to insert as they wish in the HTML tag
+      this.$ssrContext.colorModeClass = this.currentMode === 'system' ? `${this.className.replace(/%cm/g, this.getPrefersColorScheme)}` : className // Adds the className in the ssr context for the user to insert as they wish in the HTML tag
     },
 
     handlePreferColorScheme (e) {
