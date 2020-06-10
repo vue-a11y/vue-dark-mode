@@ -7,7 +7,7 @@ If you are using `vue-cli` to build your project, we recommend using [@akryum/vu
 ****
 :::
 
-## Usage
+## Setup
 
 `@vue-a11y/dark-mode` adds a variable called `colorModeClass` to the SSR context for you to add to your server side template.
 
@@ -36,24 +36,13 @@ In your `public/index.ssr.html`
 </html>
 ```
 
-Setup the plugin in `src/main.js`
-
-```js
-import Vue from 'vue'
-import VueDarkMode from '@vue-a11y/dark-mode'
-
-Vue.use(VueDarkMode)
-
-// ...
-```
-
-## Storage
+## Usage
 
 For it to work on the server you need to use cookies as storage, just customize the `@vue-a11y/dark-mode` storage api.
 
 In this example, we use the `universal-cookie` to work in both environments.
 
-```vue{2,10,14,18,19,20,21,22}
+```vue{2,10,11,15,19,23,24,25,26,27}
 <template>
   <DarkMode :storage="storage">
     <template v-slot="{ mode }">
@@ -63,9 +52,14 @@ In this example, we use the `universal-cookie` to work in both environments.
 </template>
 
 <script>
+import { DarkMode } from '@vue-a11y/dark-mode'
 import Cookies from 'universal-cookie'
 
 export default {
+  components: {
+    DarkMode
+  },
+
   data: () => ({
     storage: null
   }),
