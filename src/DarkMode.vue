@@ -15,6 +15,11 @@
 </template>
 
 <script>
+import {
+  storage,
+  getMediaQueryList
+} from './utils'
+
 export default {
   name: 'DarkMode',
 
@@ -34,7 +39,7 @@ export default {
       default: '%cm-mode'
     },
     storage: {
-      type: String,
+      type: [String, Object],
       default: 'localStorage'
     },
     metaThemeColor: {
@@ -70,7 +75,7 @@ export default {
       const colorSchemeTypes = ['dark', 'light']
       let colorScheme = null
       colorSchemeTypes.forEach(type => {
-        if (this.getMediaQueryList(type).matches) {
+        if (getMediaQueryList(type).matches) {
           colorScheme = type
         }
       })
@@ -90,8 +95,12 @@ export default {
       return this.modes[currentIndex === (this.modes.length - 1) ? 0 : currentIndex + 1]
     },
 
+    getStorage () {
+      return storage(this.storage)
+    },
+
     getStorageColorMode () {
-      return window[this.storage].getItem('colorMode')
+      return this.getStorage.getItem('colorMode')
     },
 
     isSystem () {
@@ -111,7 +120,7 @@ export default {
 
   mounted () {
     this.metaThemeColorElement = document.querySelector('meta[name="theme-color"]')
-    this.listenerDark = this.getMediaQueryList('dark')
+    this.listenerDark = getMediaQueryList('dark')
     this.listenerDark.addListener(this.handlePreferColorScheme)
     this.toggleFavicon(this.getPrefersColorScheme)
   },
@@ -123,14 +132,10 @@ export default {
   methods: {
     setMode (chosenMode) {
       this.chosenMode = chosenMode
-      window[this.storage].setItem('colorMode', this.chosenMode)
+      this.getStorage.setItem('colorMode', this.chosenMode)
       this.handleColorModeClass('add')
       if (Object.keys(this.metaThemeColor).length) this.setMetaThemeColor(this.metaThemeColor[this.currentMode] || this.metaThemeColor[this.getPrefersColorScheme])
       this.$emit('change-mode', this.chosenMode)
-    },
-
-    getMediaQueryList (type) {
-      return window.matchMedia(`(prefers-color-scheme: ${type})`)
     },
 
     setMetaThemeColor (color) {
