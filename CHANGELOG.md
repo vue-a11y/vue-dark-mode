@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/vue-a11y/vue-dark-mode/compare/v1.0.0...v1.0.1) (2020-06-11)
+
+
+### Bug Fixes
+
+* Use selector in favicon prop ([68626a7](https://github.com/vue-a11y/vue-dark-mode/commit/68626a7cd71142f90c9c94f6fe1f577430192580))
+
 ## [1.0.0](https://github.com/vue-a11y/vue-dark-mode/compare/v0.2.0...v1.0.0) (2020-06-10)
 
 
