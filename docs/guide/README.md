@@ -5,7 +5,7 @@ Add `@vue-a11y/dark-mode` in your Vue project.
 
 ### NPM
 ```shell
-npm install @vue-a11y/dark-mode
+npm install -S @vue-a11y/dark-mode
 ```
 
 ### Yarn
