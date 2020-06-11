@@ -1,8 +1,8 @@
 # Favicon
 
-| prop        | Type      | default
-| ----------- | --------- | ---------- 
-| `favicon`   | Boolean   | `true`
+| prop        | Type                    | default               |  Description
+| ----------- | ----------------------- | --------------------- | ------------------------ 
+| `favicon`   | `String` \| `Boolean`   | `link[rel="icon"]`    | You can define the selector of the desired favicon (e.g. `#favicon`) or to disable this functionality, just by setting it to `false`.
 
 You can switch the favicon according to the `prefers-color-scheme`.
 

@@ -62,8 +62,8 @@ export default {
       default: '%cm color mode is enabled'
     },
     favicon: {
-      type: Boolean,
-      default: true
+      type: [String, Boolean],
+      default: 'link[rel="icon"]'
     }
   },
 
@@ -162,7 +162,7 @@ export default {
     toggleFavicon (mode) {
       if (!this.favicon) return
       this.$nextTick(() => {
-        const favicon = document.querySelector('link[rel="icon"]')
+        const favicon = document.querySelector(this.favicon)
         if (!favicon) return
         const href = favicon.getAttribute('href')
         const lastFour = href.substr(-4, 4)
