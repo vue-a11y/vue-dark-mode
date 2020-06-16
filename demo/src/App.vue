@@ -124,7 +124,7 @@
         </p>
         <p class="image">
           <img
-            src="https://i.picsum.photos/id/547/800/600.jpg"
+            src="https://picsum.photos/id/547/800/600"
             alt="landscapes with mountains"
           >
         </p>
