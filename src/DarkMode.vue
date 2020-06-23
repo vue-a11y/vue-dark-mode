@@ -118,6 +118,10 @@ export default {
     }
   },
 
+  watch: {
+    defaultMode: 'handleSetMode'
+  },
+
   created () {
     if (this.getPrefersColorScheme && this.isSystem) {
       this.currentMode = this.getPrefersColorScheme
@@ -189,6 +193,10 @@ export default {
 
     toggleColorMode () {
       const selectedMode = this.getNextMode
+      this.handleSetMode(selectedMode)
+    },
+
+    handleSetMode (selectedMode) {
       this.handleColorModeClass('remove')
       this.currentMode = selectedMode === 'system' ? this.getPrefersColorScheme : selectedMode
       this.setMode(selectedMode)
