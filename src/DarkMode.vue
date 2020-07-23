@@ -1,7 +1,6 @@
 <template>
   <button
     :aria-label="getAriaLabel"
-    :title="getAriaLabel"
     class="vue-dark-mode"
     @click="toggleColorMode"
   >
