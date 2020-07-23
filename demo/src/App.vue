@@ -9,8 +9,9 @@
           class="btn-darkmode"
           :modes="['light', 'dark', 'system']"
           :meta-theme-color="{light: '#efefef', dark: '#232b32'}"
-          aria-label="Passa al colore modalità %cm"
-          aria-live="La modalità %cm è stata selezionata"
+          lang="it"
+          aria-label="Passa al colore modalità %cm."
+          aria-live="La modalità %cm è stata selezionata."
           @change-mode="test"
         >
           <template v-slot="{ mode }">
