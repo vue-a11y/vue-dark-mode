@@ -35,9 +35,9 @@ After changing the color mode, the message will be changed in the element with `
 ### Example (spanish)
 
 ```vue
-<DarkMode 
-  ariaLabel="Cambiar al modo de color %cm"
-  ariaLive="Se eligió el modo de color %cm"
+<DarkMode
+  ariaLabel="Cambiar al modo de color %cm."
+  ariaLive="Se eligió el modo de color %cm."
 >
   <template v-slot="{ mode }">
     Modo de color: {{ mode }}
@@ -49,8 +49,7 @@ After changing the color mode, the message will be changed in the element with `
 
 ```html
 <button
-  aria-label="Cambiar al modo de color light"
-  title="Cambiar al modo de color light"
+  aria-label="Cambiar al modo de color light."
   class="vue-dark-mode"
 >
   <span
