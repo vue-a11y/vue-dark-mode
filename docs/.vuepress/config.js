@@ -29,6 +29,58 @@ module.exports = {
           {
             text: 'How to',
             link: '/howto/'
+          },
+          {
+            text: 'Vue A11y',
+            ariaLabel: 'More about Vue accessibility project',
+            items: [
+              {
+                text: 'Packages',
+                items: [
+                  {
+                    text: 'vue-axe',
+                    link: 'https://github.com/vue-a11y/vue-axe'
+                  },
+                  {
+                    text: 'vue-skip-to',
+                    link: 'https://github.com/vue-a11y/vue-skip-to'
+                  },
+                  {
+                    text: 'vue-dark-mode',
+                    link: 'https://github.com/vue-a11y/vue-dark-mode'
+                  },
+                  {
+                    text: 'vue-announcer',
+                    link: 'https://github.com/vue-a11y/vue-announcer'
+                  },
+                  {
+                    text: 'vue-focus-loop',
+                    link: 'https://github.com/vue-a11y/vue-focus-loop'
+                  },
+                  {
+                    text: 'vue-accessible-multiselect',
+                    link: 'https://github.com/vue-a11y/vue-accessible-multiselect'
+                  },
+                  {
+                    text: 'eslint-plugin-vuejs-accessibility',
+                    link: 'https://github.com/vue-a11y/vue-axehttps://github.com/vue-a11y/eslint-plugin-vuejs-accessibility'
+                  },
+                ]
+              },
+              {
+                text: 'Links',
+                items: [
+                  {
+                    text: 'Github',
+                    link: 'https://github.com/vue-a11y'
+                  },
+                  {
+                    text: 'Twitter',
+                    link: 'https://twitter.com/vue_a11y'
+                  }
+                ]
+              }
+            ]
           }
         ],
         sidebar: [
